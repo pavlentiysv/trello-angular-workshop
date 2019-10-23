@@ -36,11 +36,11 @@ export class AuthService {
     return this.user = user;
   }
 
-  login(email: string, password: string): void {
-    this.sendAuthData('signin', { email, password });
+  async login(email: string, password: string): Promise<void> {
+    await this.sendAuthData('signin', { email, password });
   }
 
-  register(email: string, password: string, name: string): void {
-    this.sendAuthData('signup', { email, password, name });
+  async register(email: string, password: string, name: string): Promise<void> {
+    await this.sendAuthData('signup', { email, password, name });
   }
 }
