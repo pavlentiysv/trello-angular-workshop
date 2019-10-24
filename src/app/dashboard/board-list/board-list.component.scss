@@ -1,0 +1,32 @@
+.board-list-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.new-board {  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.boards-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.board-card-container {
+  width: 20%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.board-card {
+  box-sizing: border-box;  
+  display: flex;
+  justify-content: space-between;
+}
+
+.new-board-btn {
+  margin-left: 12px;
+}
