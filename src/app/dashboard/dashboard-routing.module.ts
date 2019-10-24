@@ -1,22 +1,37 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from './dashboard.component';
-import { CommonModule } from '@angular/common';
 
-export const dashboardRoutes: Routes = [
+import { BoardComponent } from './board/board.component';
+import { BoardListComponent } from './board-list/board-list.component';
+
+const dashboardRoutes: Routes = [
   {
     path: '',
-    component: DashboardComponent
-  }
+    children: [
+      {
+        path: '',
+        redirectTo: 'boardlist',
+        pathMatch: 'full'
+      },
+      {
+        path: 'board/:id',
+        component: BoardComponent
+      },
+      {
+        path: 'boardlist',
+        component: BoardListComponent
+      }
+    ]
+  },
 ];
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
-    RouterModule.forChild(
-      dashboardRoutes
-    )
+    RouterModule.forChild(dashboardRoutes)
+  ],
+  exports: [
+    RouterModule
   ]
 })
 export class DashboardRoutingModule { }

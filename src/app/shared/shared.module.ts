@@ -5,17 +5,23 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { PasswordPipe } from './pipes/password.pipe';
 import { MaterialModule } from './material.module';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
-  declarations: [PasswordPipe],
+  declarations: [
+    PasswordPipe,
+    HeaderComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule
   ],
   exports: [
     FormsModule,
     PasswordPipe,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    HeaderComponent
   ]
 })
 export class SharedModule { }

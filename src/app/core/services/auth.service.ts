@@ -26,7 +26,7 @@ export class AuthService {
     return this.user;
   }
 
-  async sendAuthData(url, data): Promise<User> {
+  async sendAuthData(url: string, data): Promise<User> {
     const { user } = await this.apiService.postWithoutToken(`auth/${url}`, data);
 
     if (!!user) {
@@ -42,5 +42,11 @@ export class AuthService {
 
   async register(email: string, password: string, name: string): Promise<void> {
     await this.sendAuthData('signup', { email, password, name });
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    console.log('logout');
+    this.isAuthorizedSubject.next(false);
   }
 }

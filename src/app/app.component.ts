@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SpinnerService } from './core/services/spinner.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'trello-angular-workshop';
+  showSpinner$: Observable<boolean>;
+
+  constructor(
+    private spinner: SpinnerService
+  ) {
+    this.showSpinner$ = spinner.getValue();
+  }
+
 }

@@ -1,0 +1,23 @@
+.content {
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.boards-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.board {  
+  width: 20%;
+  margin: 12px;
+  box-sizing: border-box;  
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-new-btn {
+  margin-left: 10px;
+}
