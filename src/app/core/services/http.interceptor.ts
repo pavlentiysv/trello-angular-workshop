@@ -12,7 +12,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
 
   constructor(
     private spinner: SpinnerService
-  ) {}
+  ) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.spinner.show();
@@ -21,11 +21,9 @@ export class AppHttpInterceptor implements HttpInterceptor {
       .pipe(
         tap(
           data => {
-            console.log(data);
             this.spinner.hide();
           },
           error => {
-            console.log(error.message);
             this.spinner.hide();
           }
         )

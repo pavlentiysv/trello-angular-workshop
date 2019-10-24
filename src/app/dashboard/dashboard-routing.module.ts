@@ -3,10 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { BoardComponent } from './board/board.component';
 import { BoardListComponent } from './board-list/board-list.component';
+import { DashboardComponent } from './dashboard.component';
 
 const dashboardRoutes: Routes = [
   {
     path: '',
+    component: DashboardComponent,
     children: [
       {
         path: '',

@@ -1,1 +1,27 @@
-<p>board-list works!</p>
+<div class="board-list-header">
+  <div class="new-board">
+    <mat-form-field>
+      <input matInput type="text" [(ngModel)]="newBoardTitle" placeholder="New board" />
+    </mat-form-field>
+    <button mat-icon-button color="primary" class="new-board-btn btn" (click)="newBoard()">
+      <mat-icon>
+        add_box
+      </mat-icon>
+    </button>
+  </div>
+</div>
+<div class="boards-container">
+  <ng-container *ngFor="let board of boards">
+    <div class="board-card-container">
+      <mat-card class="board-card">
+        <div class="board-title">
+          {{ board.title }}
+        </div>
+        <div class="board-tools">
+          <mat-icon class="btn" (click)="viewBoard(board._id)">visibility</mat-icon>
+          <mat-icon class="btn" (click)="deleteBoard(board._id)">delete</mat-icon>
+        </div>
+      </mat-card>
+    </div>
+  </ng-container>  
+</div>
