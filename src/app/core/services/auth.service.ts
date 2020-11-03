@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { APIService } from './api.service';
-import { User } from '../models/user.model';
+import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private user: User;
+  private user: firebase.User;
   private isAuthorizedSubject = new BehaviorSubject<boolean>(undefined);
 
   constructor(
@@ -16,37 +16,29 @@ export class AuthService {
   ) {
     const isAuthorized = !!localStorage.getItem('token');
     this.isAuthorizedSubject.next(isAuthorized);
+    // sign in with token
   }
 
   isAuthorized(): Observable<boolean> {
     return this.isAuthorizedSubject.asObservable();
   }
 
-  getUser(): User {
+  getUser(): firebase.User {
     return this.user;
   }
 
-  async sendAuthData(url: string, data): Promise<User> {
-    const { user } = await this.apiService.postWithoutToken(`auth/${url}`, data);
-
-    if (!!user) {
-      this.isAuthorizedSubject.next(true);
-    }
-
-    return this.user = user;
-  }
-
   async login(email: string, password: string): Promise<void> {
-    await this.sendAuthData('signin', { email, password });
+    const loginInfo = await firebase.auth().signInWithEmailAndPassword(email, password);
+    console.log(loginInfo);
   }
 
   async register(email: string, password: string, name: string): Promise<void> {
-    await this.sendAuthData('signup', { email, password, name });
-  }
+    const regInfo = await firebase.auth().createUserWithEmailAndPassword(email, password);
+    console.log(regInfo);
+    }
 
   logout() {
     localStorage.removeItem('token');
-    console.log('logout');
     this.isAuthorizedSubject.next(false);
   }
 }

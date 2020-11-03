@@ -8,8 +8,32 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="node_modules/firebaseui/dist/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="node_modules/firebaseui/dist/firebaseui.css" />
 </head>
 <body class="mat-app-background">
   <app-root></app-root>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+  https://firebase.google.com/docs/web/setup#available-libraries -->
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyAE5SBINXXyJm_5iWM_BNvZmpC9Y8NJV6s",
+      authDomain: "trello-clone-ce93a.firebaseapp.com",
+      databaseURL: "https://trello-clone-ce93a.firebaseio.com",
+      projectId: "trello-clone-ce93a",
+      storageBucket: "trello-clone-ce93a.appspot.com",
+      messagingSenderId: "182381529138",
+      appId: "1:182381529138:web:563c2457cc7026ce6e942b"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
 </body>
 </html>
